@@ -1,9 +1,24 @@
 {% extends 'base/main.html' %}
-
+{% load static %}
 
 {% block content %}
-room
 
+<main>
+    <section id="room-name-wrapper">
+
+        <p>Room Name: <span id="room-name"></span></p>
+    </section>
+
+    <section id="video-streams">
+        <div class="video-container" id="user-container-1">
+            <div class="username-wrapper"><span class="user-name">My Name</span></div>
+            <div class="video-player" id="user-1"></div>
+        </div>
+
+    </section>
+</main>
+
+<script  src="{% static 'js/stream.js' %}"></script>
 {% endblock content %}
 
 
