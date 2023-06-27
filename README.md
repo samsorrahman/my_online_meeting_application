@@ -1,5 +1,11 @@
 # MyChat
 
+
+![vid0](https://github.com/samsorrahman/my_online_meeting_application/assets/112087807/a49d6fbd-c131-4e74-ac4c-044b27b8414e)
+<br>
+<br>
+![vid1](https://github.com/samsorrahman/my_online_meeting_application/assets/112087807/f412bc24-3795-482c-810a-f3843d08a6e6)
+
 ## Description 
 A Group video calling application using the Agora Web SDK with a Django backend.
 
