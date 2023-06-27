@@ -7,12 +7,12 @@ A Group video calling application using the Agora Web SDK with a Django backend.
 
 #### 1 - Clone repo
 ```
-git clone https://github.com/divanov11/mychat
+https://github.com/samsorrahman/my_online_meeting_application.git
 ```
 
 #### 2 - Install requirements
 ```
-cd mychat
+
 pip install -r requirements.txt
 ```
 
