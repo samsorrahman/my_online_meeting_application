@@ -6,9 +6,10 @@ let UID;
 const client = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' });
 
 let localTracks = [];
-let remote = {};
+let remoteUsers = {}; // Define remoteUsers object to store user information
 
 let joinAndDisplayLocalStream = async () => {
+    client.on('user-published', handleUserJoined);
     // joining the channel
     UID = await client.join(App, CHANNEL, TOKEN, null);
 
@@ -30,6 +31,33 @@ let joinAndDisplayLocalStream = async () => {
 
     // allowing others to see
     await client.publish([localTracks[0], localTracks[1]]);
+};
+
+let handleUserJoined = async (user, mediaType) => {
+    remoteUsers[user.uid] = user; // Store the user information in remoteUsers object
+    await client.subscribe(user, mediaType);
+
+    if (mediaType == 'video') {
+        let player = document.getElementById(`user-container-${user.uid}`);
+        if (player != null) {
+            player.remove();
+        }
+        // put it on browser creating a player
+        player = `
+        <div class="video-container" id="user-container-${user.uid}">
+        <div class="username-wrapper"><span class="user-name">My Name</span></div>
+        <div class="video-player" id="user-${user.uid}"></div>
+        </div>
+    `;
+
+        // appending the player
+        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player);
+        user.videoTrack.play(`user-${user.uid}`);
+    }
+
+    if (mediaType === 'audio') {
+        user.audioTrack.play();
+    }
 };
 
 joinAndDisplayLocalStream();
