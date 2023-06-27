@@ -1,9 +1,6 @@
 {% extends 'base/main.html' %}
 {% load static %}
 
-
-
-
 {% block content %}
 
 <main>
@@ -11,7 +8,7 @@
     <section id="form-container">
 <img id='logo' src="{% static 'images/chat-icon.png' %}">
         
-<div>
+<div id="welcome-message">
     <h1>Welcome to Samsor Rahman Chat Application</h1>
     <p>A group video chat application for you</p>
 </div>
@@ -19,6 +16,10 @@
 <form id='form'>
     <div class ="form-field">
         <input type="text" name="room" placeholder= "Enter a room name .." style="text-transform: uppercase" />
+    </div>
+
+    <div class ="form-field">
+        <input type="text" name="username" placeholder= "Enter your name .." style="text-transform: uppercase" />
     </div>
 
     <div class ="form-field">
