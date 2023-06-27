@@ -10,6 +10,7 @@ let remoteUsers = {}; // Define remoteUsers object to store user information
 
 let joinAndDisplayLocalStream = async () => {
     client.on('user-published', handleUserJoined);
+    client.on('user-left', handleUserLeft);
     // joining the channel
     UID = await client.join(App, CHANNEL, TOKEN, null);
 
@@ -59,5 +60,12 @@ let handleUserJoined = async (user, mediaType) => {
         user.audioTrack.play();
     }
 };
+
+let handleUserLeft = async (user) => {
+    delete remoteUsers[user.uid]
+    document.getElementById(`user-container-${user.uid}`).remove()
+}
+
+
 
 joinAndDisplayLocalStream();
